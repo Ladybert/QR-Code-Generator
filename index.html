@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator Interaktif</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./stylesheet.css">
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>Custom QR Code Generator</h1>
+
+    <div id="cropModal" class="crop-modal hidden">
+        <div class="crop-box">
+        <h3>🌀 Crop Logo Image</h3>
+        <img id="cropImage" src="" alt="Crop Source" />
+        <div class="crop-actions">
+            <label><input type="radio" name="shape" value="square" checked> Kotak</label>
+            <label><input type="radio" name="shape" value="circle"> Lingkaran</label>
+            <button id="cropDoneBtn">Done</button>
+        </div>
+        </div>
+    </div>
+
+    <form id="qrForm">
+      <label>Nama File Output:
+        <input type="text" id="filename" placeholder="Contoh: MarketQR" required>
+      </label>
+
+      <label>Data QR:
+        <input type="text" id="qrData" placeholder="Masukkan teks/link..." required>
+      </label>
+
+      <label>Upload Logo (optional):
+        <input type="file" id="logoInput" accept="image/*">
+      </label>
+
+      <label>Ukuran (px):
+        <input type="number" id="sizeInput" value="300" min="100">
+      </label>
+
+      <label>Warna Garis:
+        <input type="color" id="dotColor" value="#000000">
+      </label>
+
+      <label>Bentuk Garis:
+        <select id="dotType">
+          <option value="square">Kotak</option>
+          <option value="dots">Titik</option>
+          <option value="rounded">Rounded</option>
+          <option value="classy">Classy</option>
+        </select>
+      </label>
+
+      <button type="submit">Generate</button>
+      <button type="button" id="downloadBtn">Download</button>
+    </form>
+
+    <div id="qr-code"></div>
+  </div>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
