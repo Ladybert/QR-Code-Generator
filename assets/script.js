@@ -72,13 +72,12 @@ document.getElementById("qrForm").addEventListener("submit", async (e) => {
   const size = parseInt(document.getElementById("sizeInput").value);
   const dotColor = document.getElementById("dotColor").value;
   const dotType = document.getElementById("dotType").value;
-  const cropLogo = document.getElementById("cropLogo").checked;
 
   let logoImage = null;
 
   const logoInput = document.getElementById("logoInput");
   if (logoInput.files.length > 0) {
-    if (cropLogo && croppedLogoData) {
+    if (croppedLogoData) {
       logoImage = croppedLogoData;
     } else {
       logoImage = await toBase64(logoInput.files[0]);
@@ -101,7 +100,7 @@ document.getElementById("qrForm").addEventListener("submit", async (e) => {
     imageOptions: {
       crossOrigin: "anonymous",
       hideBackgroundDots: false,
-      imageSize: cropLogo ? 0.3 : 0.5
+      imageSize: size ? 0.3 : 0.5,
     }
   });
 
